@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.waleska404.shrek.util.Constants.DETAILS_ARGUMENT_KEY
 
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
@@ -24,7 +25,7 @@ fun SetupNavGraph(navController: NavHostController) {
         }
         composable(
             route = Screen.Details.route,
-            arguments = listOf(navArgument("characterId") {
+            arguments = listOf(navArgument(DETAILS_ARGUMENT_KEY) {
                 type = NavType.IntType
             })
         ) {
