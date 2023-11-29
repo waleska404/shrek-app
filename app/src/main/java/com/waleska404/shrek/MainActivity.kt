@@ -7,7 +7,9 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.waleska404.shrek.navigation.SetupNavGraph
 import com.waleska404.shrek.ui.theme.ShrekTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private lateinit var navController: NavHostController
