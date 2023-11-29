@@ -8,7 +8,7 @@ import com.waleska404.shrek.data.local.dao.CharacterRemoteKeyDao
 import com.waleska404.shrek.domain.model.CharacterRemoteKey
 import com.waleska404.shrek.domain.model.ShrekCharacter
 
-@Database(entities = [ShrekCharacter::class, CharacterRemoteKey::class], version = 1)
+@Database(entities = [ShrekCharacter::class, CharacterRemoteKey::class], version = 1, exportSchema = false)
 @TypeConverters(DatabaseConverter::class)
 abstract class ShrekDatabase: RoomDatabase() {
 
