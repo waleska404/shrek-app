@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Shrek</string>
     <string name="app_logo">App Logo</string>
+    <string name="on_boarding_image">On boarding image</string>
 </resources>
