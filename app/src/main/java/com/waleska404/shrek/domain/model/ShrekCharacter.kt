@@ -6,7 +6,7 @@ import com.waleska404.shrek.util.Constants.CHARACTER_DATABASE_TABLE
 
 
 @Entity(tableName = CHARACTER_DATABASE_TABLE)
-data class Character(
+data class ShrekCharacter(
     @PrimaryKey(autoGenerate = false)
     val id: Int,
     val name: String,
