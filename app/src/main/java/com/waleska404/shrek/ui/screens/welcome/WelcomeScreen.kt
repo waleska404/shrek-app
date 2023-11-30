@@ -25,6 +25,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.waleska404.shrek.R
 import com.waleska404.shrek.domain.model.OnBoardingPage
@@ -40,7 +41,10 @@ import com.waleska404.shrek.util.LightAndDarkPreviews
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun WelcomeScreen(navController: NavHostController) {
+fun WelcomeScreen(
+    navController: NavHostController,
+    welcomeViewModel: WelcomeViewModel = hiltViewModel()
+) {
     val pages = listOf(
         OnBoardingPage.First,
         OnBoardingPage.Second,
@@ -80,7 +84,7 @@ fun WelcomeScreen(navController: NavHostController) {
         ) {
             navController.popBackStack()
             navController.navigate(Screen.Home.route)
-            //welcomeViewModel.saveOnBoardingState(completed = true)
+            welcomeViewModel.saveOnBoardingState(completed = true)
         }
     }
 }

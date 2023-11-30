@@ -6,6 +6,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.waleska404.shrek.ui.screens.home.HomeScreen
 import com.waleska404.shrek.ui.screens.splash.SplashScreen
 import com.waleska404.shrek.ui.screens.welcome.WelcomeScreen
 import com.waleska404.shrek.util.Constants.DETAILS_ARGUMENT_KEY
@@ -14,7 +15,7 @@ import com.waleska404.shrek.util.Constants.DETAILS_ARGUMENT_KEY
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Welcome.route,
+        startDestination = Screen.Splash.route,
     ) {
         composable(route = Screen.Splash.route) {
             SplashScreen(navController = navController)
@@ -23,7 +24,7 @@ fun SetupNavGraph(navController: NavHostController) {
             WelcomeScreen(navController = navController)
         }
         composable(route = Screen.Home.route) {
-
+            HomeScreen()
         }
         composable(
             route = Screen.Details.route,
