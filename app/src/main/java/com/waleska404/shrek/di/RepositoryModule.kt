@@ -5,6 +5,7 @@ import com.waleska404.shrek.data.repository.DataStoreOperationsImpl
 import com.waleska404.shrek.data.repository.Repository
 import com.waleska404.shrek.domain.repository.DataStoreOperations
 import com.waleska404.shrek.domain.use_cases.UseCases
+import com.waleska404.shrek.domain.use_cases.get_all_characters.GetAllCharactersUseCase
 import com.waleska404.shrek.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
 import com.waleska404.shrek.domain.use_cases.save_onboarding.SaveOnBoardingUseCase
 import dagger.Module
@@ -31,6 +32,7 @@ object RepositoryModule {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
+            getAllCharactersUseCase = GetAllCharactersUseCase(repository)
         )
     }
 }
