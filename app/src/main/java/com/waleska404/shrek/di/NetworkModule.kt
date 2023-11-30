@@ -2,7 +2,10 @@ package com.waleska404.shrek.di
 
 import androidx.paging.ExperimentalPagingApi
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.waleska404.shrek.data.local.ShrekDatabase
 import com.waleska404.shrek.data.remote.ShrekApi
+import com.waleska404.shrek.data.repository.RemoteDataSourceImpl
+import com.waleska404.shrek.domain.repository.RemoteDataSource
 import com.waleska404.shrek.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -48,7 +51,6 @@ object NetworkModule {
         return retrofit.create(ShrekApi::class.java)
     }
 
-    /*
     @Provides
     @Singleton
     fun provideRemoteDataSource(
@@ -56,8 +58,8 @@ object NetworkModule {
         shrekDatabase: ShrekDatabase
     ): RemoteDataSource {
         return RemoteDataSourceImpl(
-            borutoApi = borutoApi,
-            borutoDatabase = borutoDatabase
+            shrekApi = shrekApi,
+            shrekDatabase = shrekDatabase
         )
-    }*/
+    }
 }
