@@ -8,6 +8,6 @@ data class ApiResponse(
     val message: String? = null,
     val prevPage: Int? = null,
     val nextPage: Int? = null,
-    val heroes: List<ShrekCharacter> = emptyList(),
+    val characters: List<ShrekCharacter> = emptyList(),
     val lastUpdated: Long? = null
 )
