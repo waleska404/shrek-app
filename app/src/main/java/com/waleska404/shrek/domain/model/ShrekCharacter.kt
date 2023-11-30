@@ -3,8 +3,9 @@ package com.waleska404.shrek.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.waleska404.shrek.util.Constants.CHARACTER_DATABASE_TABLE
+import kotlinx.serialization.Serializable
 
-
+@Serializable
 @Entity(tableName = CHARACTER_DATABASE_TABLE)
 data class ShrekCharacter(
     @PrimaryKey(autoGenerate = false)
