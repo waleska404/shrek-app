@@ -22,7 +22,30 @@ class CharacterRemoteMediator @Inject constructor(
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, ShrekCharacter>): MediatorResult {
         return try {
-            val response = shrekApi.getAllCharacters(page = 1)
+            val page = when (loadType) {
+                LoadType.REFRESH -> {
+                    val remoteKeys = getRemoteKeyClosestToCurrentPosition(state)
+                    remoteKeys?.nextPage?.minus(1) ?: 1
+                }
+                LoadType.PREPEND -> {
+                    val remoteKeys = getRemoteKeyForFirstItem(state)
+                    val prevPage = remoteKeys?.prevPage
+                        ?: return MediatorResult.Success(
+                            endOfPaginationReached = remoteKeys != null
+                        )
+                    prevPage
+                }
+                LoadType.APPEND -> {
+                    val remoteKeys = getRemoteKeyForLastItem(state)
+                    val nextPage = remoteKeys?.nextPage
+                        ?: return MediatorResult.Success(
+                            endOfPaginationReached = remoteKeys != null
+                        )
+                    nextPage
+                }
+            }
+
+            val response = shrekApi.getAllCharacters(page = page)
             if(response.characters.isNotEmpty()) {
                 shrekDatabase.withTransaction {
                     if (loadType == LoadType.REFRESH) {
@@ -46,5 +69,33 @@ class CharacterRemoteMediator @Inject constructor(
         } catch (e: Exception) {
             return MediatorResult.Error(e)
         }
+    }
+
+    private suspend fun getRemoteKeyClosestToCurrentPosition(
+        state: PagingState<Int, ShrekCharacter>
+    ): CharacterRemoteKeys? {
+        return state.anchorPosition?.let { position ->
+            state.closestItemToPosition(position)?.id?.let { id ->
+                characterRemoteKeysDao.getRemoteKeys(id = id)
+            }
+        }
+    }
+
+    private suspend fun getRemoteKeyForFirstItem(
+        state: PagingState<Int, ShrekCharacter>
+    ): CharacterRemoteKeys? {
+        return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
+            ?.let { character ->
+                characterRemoteKeysDao.getRemoteKeys(id = character.id)
+            }
+    }
+
+    private suspend fun getRemoteKeyForLastItem(
+        state: PagingState<Int, ShrekCharacter>
+    ): CharacterRemoteKeys? {
+        return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()
+            ?.let { character ->
+                characterRemoteKeysDao.getRemoteKeys(id = character.id)
+            }
     }
 }

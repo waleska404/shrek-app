@@ -10,7 +10,7 @@ import com.waleska404.shrek.domain.model.CharacterRemoteKeys
 interface CharacterRemoteKeysDao {
 
     @Query("SELECT * FROM character_remote_keys_table WHERE id = :id")
-    fun getRemoteKey(id: Int): CharacterRemoteKeys?
+    suspend fun getRemoteKeys(id: Int): CharacterRemoteKeys?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAllRemoteKeys(characterRemoteKeys: List<CharacterRemoteKeys>)
