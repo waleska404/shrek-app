@@ -18,10 +18,10 @@ class RemoteDataSourceImpl(
     private val shrekDatabase: ShrekDatabase
 ) : RemoteDataSource {
 
-    private val heroDao = shrekDatabase.characterDao()
+    private val characterDao = shrekDatabase.characterDao()
 
     override fun getAllCharacters(): Flow<PagingData<ShrekCharacter>> {
-        val pagingSourceFactory = { heroDao.getAllCharacters() }
+        val pagingSourceFactory = { characterDao.getAllCharacters() }
         return Pager(
             config = PagingConfig(pageSize = ITEMS_PER_PAGE),
             remoteMediator = CharacterRemoteMediator(

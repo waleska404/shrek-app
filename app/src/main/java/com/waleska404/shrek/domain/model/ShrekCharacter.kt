@@ -13,7 +13,7 @@ data class ShrekCharacter(
     val name: String,
     val image: String,
     val about: String,
-    val rating: String,
+    val rating: Double,
     val power: Int,
     val month: String,
     val day: String,
