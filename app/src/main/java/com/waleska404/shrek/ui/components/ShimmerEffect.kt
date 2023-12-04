@@ -21,6 +21,7 @@ import com.waleska404.shrek.ui.theme.MEDIUM_PADDING
 import com.waleska404.shrek.ui.theme.NAME_PLACEHOLDER_HEIGHT
 import com.waleska404.shrek.ui.theme.RATING_PLACEHOLDER_HEIGHT
 import com.waleska404.shrek.ui.theme.SMALL_PADDING
+import com.waleska404.shrek.ui.theme.ShrekTheme
 
 @Composable
 fun ShimmerEffect() {
@@ -108,7 +109,9 @@ fun ShimmerItem(alpha: Float) {
 @Composable
 @Preview
 fun ShimmerItemPreview() {
-    AnimatedShimmerItem()
+    ShrekTheme {
+        AnimatedShimmerItem()
+    }
 }
 
 @Composable

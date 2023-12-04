@@ -11,4 +11,5 @@ data class CharacterRemoteKeys(
     val id: Int,
     val prevPage: Int?,
     val nextPage: Int?,
+    val lastUpdated: Long?,
 )
