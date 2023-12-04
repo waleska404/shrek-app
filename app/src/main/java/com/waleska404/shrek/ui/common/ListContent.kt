@@ -4,7 +4,6 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -24,6 +23,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.itemContentType
+import androidx.paging.compose.itemKey
 import androidx.wear.compose.material.ContentAlpha
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.AsyncImage
@@ -53,11 +54,11 @@ fun ListContent(
             verticalArrangement = Arrangement.spacedBy(SMALL_PADDING)
         ) {
             items(
-                items = characters.itemSnapshotList.items,
-                key = { character ->
-                    character.id
-                }
-            ) { character ->
+                count = characters.itemCount,
+                key = characters.itemKey { it.id },
+                contentType = characters.itemContentType { "character" }
+            ) {
+                val character =  characters[it] ?: return@items
                 CharacterItem(character = character, navController = navController)
             }
         }
