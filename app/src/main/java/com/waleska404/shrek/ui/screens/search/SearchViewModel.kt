@@ -21,7 +21,7 @@ class SearchViewModel @Inject constructor(
     private val _searchQuery = mutableStateOf("")
     val searchQuery = _searchQuery
 
-    private val _searchedCharacters = MutableStateFlow<PagingData<ShrekCharacter>>(PagingData.empty())
+    private val _searchedCharacters = MutableStateFlow<PagingData<ShrekCharacter>>(PagingData.from(emptyList()))
     val searchedCharacters = _searchedCharacters
 
     fun updateSearchQuery(query: String) {
