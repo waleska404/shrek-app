@@ -6,6 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.waleska404.shrek.data.local.ShrekDatabase
 import com.waleska404.shrek.data.paging_source.CharacterRemoteMediator
+import com.waleska404.shrek.data.paging_source.SearchCharactersSource
 import com.waleska404.shrek.data.remote.ShrekApi
 import com.waleska404.shrek.domain.model.ShrekCharacter
 import com.waleska404.shrek.domain.repository.RemoteDataSource
@@ -33,15 +34,11 @@ class RemoteDataSourceImpl(
     }
 
     override fun searchCharacters(query: String): Flow<PagingData<ShrekCharacter>> {
-        TODO("Not yet implemented")
-    }
-    /*
-    override fun searchCharacters(query: String): Flow<PagingData<ShrekCharacter>> {
         return Pager(
             config = PagingConfig(pageSize = ITEMS_PER_PAGE),
             pagingSourceFactory = {
-                SearchHeroesSource(borutoApi = shrekApi, query = query)
+                SearchCharactersSource(shrekApi = shrekApi, query = query)
             }
         ).flow
-    }*/
+    }
 }

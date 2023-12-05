@@ -8,6 +8,7 @@ import com.waleska404.shrek.domain.use_cases.UseCases
 import com.waleska404.shrek.domain.use_cases.get_all_characters.GetAllCharactersUseCase
 import com.waleska404.shrek.domain.use_cases.read_onboarding.ReadOnBoardingUseCase
 import com.waleska404.shrek.domain.use_cases.save_onboarding.SaveOnBoardingUseCase
+import com.waleska404.shrek.domain.use_cases.search_characters.SearchCharactersUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,7 +33,8 @@ object RepositoryModule {
         return UseCases(
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
-            getAllCharactersUseCase = GetAllCharactersUseCase(repository)
+            getAllCharactersUseCase = GetAllCharactersUseCase(repository),
+            searchCharactersUseCase = SearchCharactersUseCase(repository)
         )
     }
 }
