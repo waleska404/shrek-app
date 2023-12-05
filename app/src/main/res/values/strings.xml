@@ -7,4 +7,5 @@
     <string name="network_error_icon">network error icon</string>
     <string name="character_image">character image</string>
     <string name="close_icon">close icon</string>
+    <string name="info_icon">info icon</string>
 </resources>

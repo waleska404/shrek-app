@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import coil.annotation.ExperimentalCoilApi
+import com.waleska404.shrek.ui.screens.details.DetailsScreen
 import com.waleska404.shrek.ui.screens.home.HomeScreen
 import com.waleska404.shrek.ui.screens.search.SearchScreen
 import com.waleska404.shrek.ui.screens.splash.SplashScreen
@@ -35,7 +36,7 @@ fun SetupNavGraph(navController: NavHostController) {
                 type = NavType.IntType
             })
         ) {
-
+            DetailsScreen(navController = navController)
         }
         composable(route = Screen.Search.route) {
             SearchScreen(
