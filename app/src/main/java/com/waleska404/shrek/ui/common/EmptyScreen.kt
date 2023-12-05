@@ -2,6 +2,7 @@ package com.waleska404.shrek.ui.common
 
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.util.Log
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -132,6 +133,7 @@ fun EmptyContent(
 }
 
 fun parseErrorMessage(error: LoadState.Error): String {
+    Log.e("CONNECTION ERROR", "${error.error.message}")
     return when (error.error) {
         is SocketTimeoutException -> {
             "Server Unavailable."
