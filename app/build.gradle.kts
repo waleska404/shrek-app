@@ -104,6 +104,11 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.5.0")
 
     implementation("androidx.compose.material:material:1.5.4")
+
     // Needed to get a view model reference in Jetpack Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.2")
+
+    // Palette API
+    implementation("androidx.palette:palette-ktx:1.0.0")
+
 }

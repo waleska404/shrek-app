@@ -1,5 +1,6 @@
 package com.waleska404.shrek.navigation
 
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -14,7 +15,7 @@ import com.waleska404.shrek.ui.screens.splash.SplashScreen
 import com.waleska404.shrek.ui.screens.welcome.WelcomeScreen
 import com.waleska404.shrek.util.Constants.DETAILS_ARGUMENT_KEY
 
-@OptIn(ExperimentalCoilApi::class)
+@OptIn(ExperimentalCoilApi::class, ExperimentalMaterialApi::class)
 @Composable
 fun SetupNavGraph(navController: NavHostController) {
     NavHost(
